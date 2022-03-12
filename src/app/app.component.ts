@@ -19,7 +19,7 @@ export class AppComponent {
     "assets/perrillo.jpeg"
   ];
 
-  perfil = true;
+  perfil = false;
 
   togglePerfil(): void {
     this.perfil = !this.perfil;

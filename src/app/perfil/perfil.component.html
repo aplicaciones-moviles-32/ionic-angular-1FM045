@@ -33,9 +33,9 @@
         </ion-button>
     </ion-row>
     <ion-row *ngIf="editando">
-        <p>Nueva Bio: {{bio}}</p>
+       
         <ion-input [(ngModel)]="bio" class="borde-input"></ion-input>
-        <ion-button (click)="guardarBio()">Guardar</ion-button>
+        <ion-button (click)="guardarNuevaBio()">Guardar</ion-button>
         <ion-button (click)="toggleEditar()">Cancelar</ion-button>
     </ion-row>
 
