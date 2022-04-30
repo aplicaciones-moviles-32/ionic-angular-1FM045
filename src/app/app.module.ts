@@ -27,10 +27,9 @@ import { PostComponent } from './post/post.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp , provideFirebaseApp} from '@angular/fire/app';
-//import {provideFirestore} from '@angular/fire/firestore';
 
-
-
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 //GUARDS
 
 //Auth
@@ -42,6 +41,8 @@ import { AuthComponent } from './auth/auth.component';
 //Cloud Storage - Firease
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { PublicarComponent } from './publicar/publicar.component';
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -67,13 +68,17 @@ import { PublicarComponent } from './publicar/publicar.component';
     AppRoutingModule,
     IonicModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    AngularFireDatabaseModule,
     RoutesModule, 
     AngularFireStorageModule
   ],
   providers: [
+    AngularFireDatabase,
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
     MyGuard,
-    { provide: BUCKET, useValue: 'my-bucket-name' } //bucket fire storage
+    { provide: BUCKET, useValue: 'my-bucket-name' } ,//bucket fire storage, 
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent], 
   exports: [RoutesModule]

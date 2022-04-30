@@ -21,38 +21,36 @@ export class BdServiceService {
 
   //GET
   getPublicaciones(): any {
-    return this.http.get('https://alumnos-31-default-rtdb.firebaseio.com/')
+    return this.http.get('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones.json')
   }
 
   getDatosUsuario(): any {
-    return this.http.get('https://alumnos-31-default-rtdb.firebaseio.com/')
+    return this.http.get('https://insta-base-32-default-rtdb.firebaseio.com/usuario.json')
   }
 
   getPublicacionesUsuario(): any {
-    return this.http.get('https://alumnos-31-default-rtdb.firebaseio.com/usuario/publicaciones.json')
+    return this.http.get('https://insta-base-32-default-rtdb.firebaseio.com/usuario/publicaciones.json')
   }
 
   getPublicacionDetalle(id: string): any {
-    return this.http.get('https://alumnos-31-default-rtdb.firebaseio.com/usuario/publicaciones'+ id +'.json')
+    return this.http.get('https://insta-base-32-default-rtdb.firebaseio.com/usuario/publicaciones'+ id +'.json')
   }
 
 
   //POST
   postPublicacion(post: any) {
-    return this.http.post('https://alumnos-31-default-rtdb.firebaseio.com/', post)
+    return this.http.post('https://insta-base-32-default-rtdb.firebaseio.com/', post)
   }
 
 
   //DELETE
   deletePublicacion(id: number){
-    return this.http.delete('https://alumnos-31-default-rtdb.firebaseio.com/publicaciones/'+ id.toString() + '.json')
+    return this.http.delete('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones/'+ id.toString() + '.json')
   }
-
- 
 
   //PUT
   updatePublicacion(id: number, nuevosDatos: any) {
-    return this.http.put('https://alumnos-31-default-rtdb.firebaseio.com/publicaciones/'+ id.toString() +'.json', nuevosDatos)
+    return this.http.put('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones'+ id.toString() +'.json', nuevosDatos)
   }
 
 }

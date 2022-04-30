@@ -27,7 +27,7 @@ export class FeedComponent implements OnInit {
   cargarFeed() {
     this.db.getPublicaciones().subscribe(res => {
       console.log(res);
-      this.posts = res;
+      //this.posts = res;
     })
   }
   
@@ -35,7 +35,7 @@ export class FeedComponent implements OnInit {
   borrar(idPost : number)  {
     this.db.deletePublicacion(idPost).subscribe(res => {
       console.log(res);
-      this.cargarFeed();
+      //this.cargarFeed();
     })
     
   }
