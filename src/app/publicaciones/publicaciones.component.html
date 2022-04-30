@@ -13,9 +13,9 @@
     <ion-row *ngIf=" activo =='grid'"> 
         <ion-col size="4"  *ngFor="let publicacion of publicaciones"> 
             <ion-thumbnail size="">
-                <ion-img  [src]="publicacion.src" [routerLink]="['/publicacion', publicacion.id]"></ion-img>
+                
             </ion-thumbnail>
-            
+            <ion-img [src]="publicacion.src"  [routerLink]="['/publicacion', publicacion.id]"></ion-img> <!-- -->
         </ion-col>
     </ion-row>
 </ion-grid>

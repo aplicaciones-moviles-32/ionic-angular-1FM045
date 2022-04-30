@@ -14,6 +14,7 @@ export class PublicacionesComponent implements OnInit {
   ngOnInit(): void {
     this.bd.getPublicacionesUsuario().subscribe(res => {
       this.publicaciones = res;
+      //console.log(res);
     })
   }
 

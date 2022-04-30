@@ -26,6 +26,7 @@ export class FeedComponent implements OnInit {
 
   cargarFeed() {
     this.db.getPublicaciones().subscribe(res => {
+      console.log(res);
       this.posts = res;
     })
   }
