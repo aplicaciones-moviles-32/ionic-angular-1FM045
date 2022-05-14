@@ -32,19 +32,31 @@ export class PublicacionesComponent implements OnInit {
     private fbFirebase: AngularFireDatabase
     ) { 
 
-      this.itemRef = fbFirebase.object('publicaciones');
-    this.item = this.itemRef.valueChanges(); 
-      this.itemsPublicaciones = this.fbFirebase.list('publicaciones').valueChanges()
+      this.itemRef = fbFirebase.object('prueba');
+      this.item = this.itemRef.valueChanges(); 
+      this.itemsPublicaciones = this.fbFirebase.list('publicaciones').valueChanges();
      
   }
     
 
   ngOnInit(): void {
+    console.log(this.item);
+    let posts: any = [];
+    this.bd.getPublicaciones().subscribe(res => {
+      
+      [].forEach.call(res, function(index){
+        if(index !== null ){
+          posts.push(index);
+        }
+      })
+
+      this.publicaciones = posts;
+      console.log(this.publicaciones, "publicaciones final");
+    })
     
-   
   }
 
-  publicaciones : any = [];
+  publicaciones = [];
 
   activo = 'grid';
 

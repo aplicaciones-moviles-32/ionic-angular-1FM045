@@ -43,6 +43,7 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { PublicarComponent } from './publicar/publicar.component';
 import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     PublicacionComponent,
     PostComponent,
     PublicacionesComponent, 
-    AuthComponent, 
+    //AuthComponent, 
     PublicarComponent
   ],
   imports: [
@@ -71,13 +72,17 @@ import { AngularFireModule } from '@angular/fire/compat';
     provideFirestore(() => getFirestore()),
     AngularFireDatabaseModule,
     RoutesModule, 
-    AngularFireStorageModule
+    AngularFireStorageModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: environment.production,
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})
   ],
   providers: [
     AngularFireDatabase,
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
     MyGuard,
-    { provide: BUCKET, useValue: 'my-bucket-name' } ,//bucket fire storage, 
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent], 

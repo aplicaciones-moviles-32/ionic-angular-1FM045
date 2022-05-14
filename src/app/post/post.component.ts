@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Photo } from '@capacitor/camera';
 import { BdServiceService } from '../bd-service.service';
 
+import { PhotoService } from '../services/photo.service';
 
 
 @Component({
@@ -11,7 +13,8 @@ import { BdServiceService } from '../bd-service.service';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private bd : BdServiceService) { }
+  constructor(private bd : BdServiceService, 
+    private fotoService: PhotoService) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +23,8 @@ export class PostComponent implements OnInit {
     console.log("Submit");
     this.subir()
   }
+
+  caption : string = "";
 
   nuevoPost : any = {
     "caption": "", 
@@ -30,6 +35,10 @@ export class PostComponent implements OnInit {
 
   subir() {
     this.bd.postPublicacion(this.nuevoPost).subscribe();
+  }
+
+  foto() {
+    this.fotoService.tomarFoto();
   }
 
 }
