@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyD26v3ZYBC71ny6qSOx-MukoEJ7p19eDEs",
-    authDomain: "insta-base-32.firebaseapp.com",
-    databaseURL: "https://insta-base-32-default-rtdb.firebaseio.com",
-    projectId: "insta-base-32",
-    storageBucket: "insta-base-32.appspot.com",
-    messagingSenderId: "278531571643",
-    appId: "1:278531571643:web:e811d03fea1be5cf99ce9e"
+    apiKey: "AIzaSyBkBUjlc70Q6ZAUybfnuEvcGHo-2K_YoI0",
+    authDomain: "alumnos-31.firebaseapp.com",
+    databaseURL: "https://alumnos-31-default-rtdb.firebaseio.com",
+    projectId: "alumnos-31",
+    storageBucket: "alumnos-31.appspot.com",
+    messagingSenderId: "5326517768",
+    appId: "1:5326517768:web:51da2af95b6a8a0cdc43bd"
   }
 };
 

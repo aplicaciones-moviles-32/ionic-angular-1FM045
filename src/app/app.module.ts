@@ -27,7 +27,22 @@ import { PostComponent } from './post/post.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp , provideFirebaseApp} from '@angular/fire/app';
-//import {provideFirestore} from '@angular/fire/firestore';
+
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+//GUARDS
+
+//Auth
+import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
+import {MyGuard} from './guards/my-guard';
+import { AuthComponent } from './auth/auth.component';
+
+
+//Cloud Storage - Firease
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { PublicarComponent } from './publicar/publicar.component';
+import { AngularFireDatabase, AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -41,7 +56,9 @@ import { initializeApp , provideFirebaseApp} from '@angular/fire/app';
     HistoriaContenidoComponent,
     PublicacionComponent,
     PostComponent,
-    PublicacionesComponent
+    PublicacionesComponent, 
+    AuthComponent, 
+    PublicarComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +68,18 @@ import { initializeApp , provideFirebaseApp} from '@angular/fire/app';
     AppRoutingModule,
     IonicModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    AngularFireDatabaseModule,
     RoutesModule, 
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [
+    AngularFireDatabase,
+    { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
+    MyGuard,
+    { provide: BUCKET, useValue: 'my-bucket-name' } ,//bucket fire storage, 
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
+  ],
   bootstrap: [AppComponent], 
   exports: [RoutesModule]
 })

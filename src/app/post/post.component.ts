@@ -17,7 +17,8 @@ export class PostComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    console.log("Submit")
+    console.log("Submit");
+    this.subir()
   }
 
   nuevoPost : any = {

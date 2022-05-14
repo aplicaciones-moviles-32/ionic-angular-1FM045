@@ -39,7 +39,7 @@ export class BdServiceService {
 
   //POST
   postPublicacion(post: any) {
-    return this.http.post('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones.json', post)
+    return this.http.post('https://insta-base-32-default-rtdb.firebaseio.com/', post)
   }
 
 
@@ -48,11 +48,9 @@ export class BdServiceService {
     return this.http.delete('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones/'+ id.toString() + '.json')
   }
 
- 
-
   //PUT
   updatePublicacion(id: number, nuevosDatos: any) {
-    return this.http.put('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones/'+ id.toString() +'.json', nuevosDatos)
+    return this.http.put('https://insta-base-32-default-rtdb.firebaseio.com/publicaciones'+ id.toString() +'.json', nuevosDatos)
   }
 
 }
